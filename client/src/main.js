@@ -32,7 +32,7 @@ channel.onConnect(error => {
     }
 
     channel.on('update', data => {
-        if(current_frame > data['current_frame']) return;
+        if(current_frame >= data['current_frame']) return;
         current_frame = data['current_frame'];
         console.log(current_frame);
         const players = data['players'];
@@ -64,8 +64,9 @@ channel.onConnect(error => {
         }
         for(const key in rectangles) {
             if(players[key] === undefined) {
-                rectangles[key] = undefined;
-                others[key] = undefined;
+                app.stage.removeChild(rectangles[key]);
+                delete rectangles[key];
+                delete others[key];
             }
         }
     });
