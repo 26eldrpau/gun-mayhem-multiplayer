@@ -1,13 +1,13 @@
-import geckos from '@geckos.io/server';
+import geckos, {iceServers} from '@geckos.io/server';
 import express from 'express';
 
 const website = express();
 website.use(express.static('dist'));
 website.listen(8080);
 
-const io = geckos();
 
 
+const io = geckos({iceServers: iceServers});
 
 io.listen(3000);
 
@@ -31,4 +31,4 @@ io.onConnection(channel => {
 
 setInterval(() => {
     io.emit('update', players);
-}, 1000/60);
+}, 50);

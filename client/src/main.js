@@ -4,6 +4,7 @@ import * as Keyboard from 'pixi.js-keyboard';
 
 
 const app = new PIXI.Application({
+    backgroundColor: 0x222222,
     antialias: true,
 });
 document.body.appendChild(app.view);
@@ -31,7 +32,7 @@ channel.onConnect(error => {
                 rectangles[key].width = 100;
                 rectangles[key].height = 100;
                 rectangles[key].position.set(data[key].x, data[key].y);
-                rectangles[key].tint = 0xFF00FF;
+                rectangles[key].tint = 0x21A300;
                 app.stage.addChild(rectangles[key]);
             } else {
                 rectangles[key].position.set(data[key].x, data[key].y);
