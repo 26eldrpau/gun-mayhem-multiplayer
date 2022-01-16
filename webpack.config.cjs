@@ -11,6 +11,11 @@ module.exports = {
             template: 'assets/index.html',
         }),
     ],
+    resolve: {
+        alias: {
+            common: path.resolve(__dirname, 'common/'),
+        }
+    },
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
